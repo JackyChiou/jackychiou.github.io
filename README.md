@@ -1,2 +1,3 @@
-# jackychiou.github.io
-慢步在雲端
+# 慢步在雲端 (Jacky Chiou)
+**分享在雲端世界所學資訊, 歡迎一起討論, 按讚及分享**
+
