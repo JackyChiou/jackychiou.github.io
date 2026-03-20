@@ -1,0 +1,10 @@
+<header class="site-header">
+  <div class="container">
+    <a class="site-title" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+    <nav class="site-nav">
+      <a href="{{ '/' | relative_url }}" {% if page.url == '/' %}class="active"{% endif %}>首頁</a>
+      <a href="{{ '/archive' | relative_url }}" {% if page.url == '/archive' %}class="active"{% endif %}>文章</a>
+      <a href="{{ '/about' | relative_url }}" {% if page.url == '/about' %}class="active"{% endif %}>關於</a>
+    </nav>
+  </div>
+</header>
