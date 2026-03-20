@@ -1,1 +1,45 @@
-theme: jekyll-theme-modernist
+title: Jacky's Cloud Blog
+description: 分享在雲端世界所學的知識與經驗
+author:
+  name: Jacky Chiou
+url: "https://jackychiou.github.io"
+baseurl: ""
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+permalink: /:year/:month/:day/:title/
+
+# Pagination
+plugins:
+  - jekyll-paginate
+  - jekyll-seo-tag
+  - jekyll-feed
+
+paginate: 8
+paginate_path: "/page/:num/"
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - LICENSE
+
+# Default front matter
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page"
+
+# Social links (uncomment and fill in as needed)
+# github_username: JackyChiou
+# twitter_username:
+# linkedin_username:
