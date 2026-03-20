@@ -83,15 +83,6 @@ Microsoft Sovereign Cloud 的完全離線能力，正好對應了高安全等級
 | 數位韌性 | 離線模式下仍可持續運作 |
 | 透明稽核 | Azure 一致的治理與政策控制 |
 
-## 與其他雲端業者的比較
-
-目前 AWS 與 Google Cloud 也各自提供主權雲方案：
-
-- **AWS：** 歐洲主權雲預計 2026 下半年上線，首個區域設在德國；另有 Outposts 提供地端部署
-- **Google Cloud：** Distributed Cloud 提供 air-gapped 解決方案
-
-但截至目前，**Microsoft 是唯一在完全離線環境中同時提供基礎設施治理、生產力工具與大型 AI 模型推論的業者**，形成較完整的 Sovereign Private Cloud 堆疊。
-
 ## 實務建議
 
 如果你的組織正在評估主權雲方案，以下幾點值得考量：
