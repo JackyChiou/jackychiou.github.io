@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Microsoft 主權雲全面升級：離線 AI、治理與生產力工具如何回應台灣資料主權需求"
-date: 2026-03-20
+date: 2026-03-25
 categories: [Azure, Sovereign Cloud]
 ---
 
