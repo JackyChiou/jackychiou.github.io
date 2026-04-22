@@ -18,7 +18,6 @@ plugins:
   - jekyll-feed
 
 # ─── Just the Docs settings ──────────────────────────────────────────────────
-color_scheme: default
 search_enabled: true
 
 search:
