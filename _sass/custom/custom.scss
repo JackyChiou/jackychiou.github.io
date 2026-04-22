@@ -1,0 +1,60 @@
+// Custom styles — loaded AFTER all Just the Docs theme styles.
+
+// ─── Blog post cards on home page ────────────────────────────────────────────
+.post-card {
+  margin-bottom: 1rem;
+
+  h3 {
+    margin-top: 0;
+    margin-bottom: 0.4rem;
+  }
+
+  .post-meta {
+    margin-bottom: 0.6rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+  }
+
+  .post-excerpt {
+    margin-bottom: 0.5rem;
+    color: $grey-dk-000;
+  }
+}
+
+// ─── Post page ───────────────────────────────────────────────────────────────
+article.post {
+  .post-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid $border-color;
+
+    .post-title {
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+    }
+
+    .post-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+  }
+
+  .post-content {
+    margin-bottom: 2rem;
+  }
+
+  .post-footer {
+    margin-top: 2rem;
+  }
+}
+
+// ─── Blog listing ────────────────────────────────────────────────────────────
+.blog-list-year {
+  color: $grey-dk-000;
+  border-bottom: 1px solid $border-color;
+  padding-bottom: 0.25rem;
+}

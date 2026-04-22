@@ -1,9 +1,9 @@
 source "https://rubygems.org"
 
-gem "github-pages", group: :jekyll_plugins
+gem "jekyll", "~> 4.3"
+gem "just-the-docs", "~> 0.10"
 
 group :jekyll_plugins do
-  gem "jekyll-paginate"
   gem "jekyll-seo-tag"
   gem "jekyll-feed"
 end
