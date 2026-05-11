@@ -10,8 +10,13 @@ permalink: /workshop/
 
 動手實作的技術 Workshop，帶你一步步完成 Azure 雲端場景的設定與部署。
 
-{: .note }
-Workshop 內容持續規劃中，敬請期待。若有特定主題需求，歡迎透過 [GitHub](https://github.com/JackyChiou) 告知。
+## 可用的 Workshop
+
+| 主題 | 說明 | 狀態 |
+|------|------|------|
+| [Azure Landing Zone 醫療雲端](./azure-landing-zone/) | 以醫療院所為情境，從零建立符合個資法與 HIPAA 的 Azure Landing Zone（M1–M6 六大模組） | ✅ 可用 |
+
+---
 
 ## 規劃中的 Workshop
 
