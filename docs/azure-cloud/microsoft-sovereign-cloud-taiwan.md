@@ -1,8 +1,9 @@
 ---
-layout: post
+layout: default
 title: "Microsoft 主權雲全面升級：離線 AI、治理與生產力工具如何回應台灣資料主權需求"
-date: 2026-03-25
-categories: [Azure, Sovereign Cloud]
+parent: Azure 雲端文章
+nav_order: 2
+permalink: /docs/azure-cloud/microsoft-sovereign-cloud-taiwan/
 ---
 
 2026 年 2 月，Microsoft 宣布 Sovereign Cloud 重大更新——Azure Local、Microsoft 365 Local 與 Foundry Local 三大元件全面支援**完全離線（Air-gapped）**部署，讓政府與高度監管產業在斷網環境下也能運行大型 AI 模型、協作工具及關鍵基礎設施。這篇文章將整理這次更新的核心內容，並從台灣法規與政策面切入，探討對本地公部門與企業的影響。

@@ -14,6 +14,7 @@ permalink: /docs/
 
 | 章節 | 說明 |
 |------|------|
+| [Azure 雲端文章](./azure-cloud/) | Azure Migrate、主權雲、站台建置與雲端實務筆記 |
 | [Azure 資安合規](./azure-security/) | CIS Benchmark、條件式存取、身份驗證設定指南 |
 
 {: .note }

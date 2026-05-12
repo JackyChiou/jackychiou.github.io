@@ -19,6 +19,7 @@ CIS Benchmark 分為 Level 1（基本）與 Level 2（進階）兩個等級。Le
 | 章節 | 等級 | 前提條件 |
 |------|------|---------|
 | [CIS 2.2.5 — MFA 條件式存取原則](./cis-2-2-5-mfa/) | Level 2 | Entra ID P1/P2 |
+| [CIS 2.2.5 完整設定指南](./entra-id-mfa-conditional-access/) | Level 2 | Entra ID P1/P2 |
 
 ## 參考資源
 

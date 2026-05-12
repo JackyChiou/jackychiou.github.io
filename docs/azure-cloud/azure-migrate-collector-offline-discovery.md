@@ -1,8 +1,9 @@
 ---
-layout: post
+layout: default
 title: "Azure Migrate Collector：無需 Azure 連線即可探索伺服器與工作負載"
-date: 2026-04-08
-categories: [Azure, Migration]
+parent: Azure 雲端文章
+nav_order: 3
+permalink: /docs/azure-cloud/azure-migrate-collector-offline-discovery/
 ---
 
 在企業規劃雲端遷移時，第一步往往是盤點現有的 IT 資產——伺服器數量、效能指標、已安裝軟體、資料庫實例等等。過去這個探索流程通常需要在目標環境部署一台連線到 Azure 的 Appliance，但對於高度監管、網路隔離或尚未取得雲端連線核准的環境來說，這就成了一道門檻。
@@ -118,7 +119,7 @@ C:\ProgramData\Microsoft Azure\OfflineData\Azure-Migrate-Discovery-YYYY-MM-DD-HH
 
 ## 結語
 
-Azure Migrate Collector 提供了一條輕量、離線優先的遷移評估路徑。對於過去因為網路限制而無法順利進行 Azure Migrate 評估的環境，現在可以用「先離線收集、後線上上傳」的兩階段模式完成整個流程。搭配先前介紹的 [Microsoft 主權雲離線能力](/2026/03/25/microsoft-sovereign-cloud-taiwan/)，Microsoft 在離線與主權情境下的工具鏈越來越完整。
+Azure Migrate Collector 提供了一條輕量、離線優先的遷移評估路徑。對於過去因為網路限制而無法順利進行 Azure Migrate 評估的環境，現在可以用「先離線收集、後線上上傳」的兩階段模式完成整個流程。搭配先前介紹的 [Microsoft 主權雲離線能力](/docs/azure-cloud/microsoft-sovereign-cloud-taiwan/)，Microsoft 在離線與主權情境下的工具鏈越來越完整。
 
 ---
 

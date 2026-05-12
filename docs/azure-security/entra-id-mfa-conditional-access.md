@@ -1,8 +1,9 @@
 ---
-layout: post
+layout: default
 title: "CIS 基準 2.2.5：為所有使用者建立多因素驗證（MFA）條件式存取原則——完整設定指南"
-date: 2026-03-25
-categories: [Azure, Security, CIS Benchmark]
+parent: Azure 資安合規
+nav_order: 2
+permalink: /docs/azure-security/entra-id-mfa-conditional-access/
 ---
 
 在 Microsoft 365 與 Azure 的安全性基準中，**CIS Benchmark 2.2.5** 要求組織為所有使用者建立多因素驗證（MFA）條件式存取原則。自 2024 年 10 月起，Microsoft 已強制所有使用者（包括 Break Glass 帳號）啟用 MFA。本文將詳細說明如何透過 Microsoft Entra ID Conditional Access 完成這項設定。
