@@ -3,7 +3,7 @@ layout: default
 title: 30 天行動計畫與檢核
 parent: Azure AI 資安與治理實戰
 grand_parent: Workshop
-nav_order: 8
+nav_order: 10
 permalink: /workshop/azure-ai-security-governance/action-plan/
 ---
 
@@ -44,6 +44,8 @@ permalink: /workshop/azure-ai-security-governance/action-plan/
 | 高權限帳號疑似遭入侵 | 啟動既有事件流程與可信管理途徑 → 保存稽核 → 由授權人員隔離身分並檢查角色異動 → 驗證恢復 | 緊急途徑是否可用？是否涵蓋根範圍提升存取？ |
 
 真實事件依組織的通報、鑑識與核准流程處置，不以教材取代事件指揮。
+
+上述金鑰情境可接續[模型 Key 與 APIM 訂用 Key 輪替演練](../key-rotation/)，實際驗證舊 Key 遭拒與替代 Key 可用。課堂時間有限時，採用[三個短 Demo](../short-demos/)；預期狀態碼不代表已實跑成功。
 
 ## 營運節奏
 

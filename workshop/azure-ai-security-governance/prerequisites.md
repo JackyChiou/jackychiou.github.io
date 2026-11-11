@@ -44,6 +44,8 @@ az account show --query "{name:name, id:id}" -o table
 
 在 Azure Portal 建立 `$rg`，並於其中準備可使用 **Azure OpenAI Chat Completions** 的模型部署。從資源頁複製實際端點，確認部署名稱、支援的 API 版本與一次少量呼叫可用。後續範例採 `2024-10-21`；若模型不支援此版本或 `max_tokens`，請依模型文件調整，勿混用 Responses API。
 
+本課的 **Foundry 主線**使用 Foundry 資源下的 Project 與模型部署，不以另一個獨立 Azure OpenAI 資源代替。資源、Project、部署名稱與推論端點的銜接見[短 Demo 的環境準備](../short-demos/#課前準備不計入展示時間)。僅使用已獲授權且預先備妥的沙盒；沒有模型或 APIM 時先做閱讀，不因本課自行建立付費資源。
+
 ## 成本與資料界線
 
 在開始前記下資源擁有者、預算與清理時間。APIM 選用支援所需 policy 的 SKU；本課以 Basic v2 沙盒為例，**不是免費資源**。不要在未確認費用時建立服務。
