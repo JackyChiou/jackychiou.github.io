@@ -3,7 +3,7 @@ layout: default
 title: 官方文件與名詞
 parent: Azure AI 資安與治理實戰
 grand_parent: Workshop
-nav_order: 9
+nav_order: 11
 permalink: /workshop/azure-ai-security-governance/references/
 ---
 
@@ -19,6 +19,9 @@ permalink: /workshop/azure-ai-security-governance/references/
 | [AI 與機器學習內建角色](https://learn.microsoft.com/en-us/azure/role-based-access-control/built-in-roles/ai-machine-learning) | 核對實際角色 Actions / DataActions，不只看名稱 |
 | [AI Services 內建 Policy](https://learn.microsoft.com/en-us/azure/ai-services/policy-reference) | 指派前確認定義、效果與適用資源 |
 | [Azure RBAC 最佳實務](https://learn.microsoft.com/en-us/azure/role-based-access-control/best-practices) | 最小權限與指派範圍 |
+| [模型服務雙 Key 輪替](https://learn.microsoft.com/en-us/azure/ai-services/rotate-keys) | 先更新備用 Key，再切換及更新原 Key |
+| [模型 Key 重新產生 CLI](https://learn.microsoft.com/en-us/cli/azure/cognitiveservices/account/keys#az-cognitiveservices-account-keys-regenerate) | `Key1` / `Key2` 與輸出控制 |
+| [Foundry 模型端點與部署](https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/endpoints) | 部署別名、資源推論端點與 API 相容性 |
 
 ## Gateway、Token 與觀測
 
@@ -28,6 +31,8 @@ permalink: /workshop/azure-ai-security-governance/references/
 | [匯入 Foundry API](https://learn.microsoft.com/en-us/azure/api-management/azure-ai-foundry-api) | 匯入模式、路徑與後端驗證 |
 | [AI API 驗證與授權](https://learn.microsoft.com/en-us/azure/api-management/api-management-authenticate-authorize-ai-apis) | Managed Identity 與 Gateway 驗證 |
 | [APIM subscriptions](https://learn.microsoft.com/en-us/azure/api-management/api-management-subscriptions) | Product 範圍與 all-access 的差異 |
+| [APIM Primary 重新產生](https://learn.microsoft.com/en-us/rest/api/apimanagement/subscription/regenerate-primary-key?view=rest-apimanagement-2024-05-01) | 指定訂用的日常輪替與外洩處置 |
+| [APIM Secondary 重新產生](https://learn.microsoft.com/en-us/rest/api/apimanagement/subscription/regenerate-secondary-key?view=rest-apimanagement-2024-05-01) | 備用 Key 輪替 |
 | [llm-token-limit](https://learn.microsoft.com/en-us/azure/api-management/llm-token-limit-policy) | 429 / 403、計數器、期間與估算限制 |
 | [LLM 日誌設定](https://learn.microsoft.com/en-us/azure/api-management/api-management-howto-llm-logs) | 診斷、內容記錄與隱私 |
 | [Gateway 日誌 schema](https://learn.microsoft.com/en-us/azure/azure-monitor/reference/tables/apimanagementgatewaylogs) | HTTP 狀態與訂用欄位 |
@@ -49,6 +54,10 @@ permalink: /workshop/azure-ai-security-governance/references/
 | [Entra 授權](https://learn.microsoft.com/en-us/entra/fundamentals/licensing) | Free / P1 / P2 與功能規劃 |
 | [日誌保留期間](https://learn.microsoft.com/en-us/entra/identity/monitoring-health/reference-reports-data-retention) | 檢視與保留排程 |
 | [Global Administrator 提升存取](https://learn.microsoft.com/en-us/azure/role-based-access-control/elevate-access-global-admin) | 租戶層級事件與移除提升權限 |
+
+## 截圖來源與授權
+
+[Gateway 頁](../ai-gateway/#實際-portal-截圖)使用 Microsoft 與文件貢獻者提供的兩張真實 Portal 截圖，取自公開的 MicrosoftDocs/azure-docs 儲存庫，依其 [Legal Notices](https://github.com/MicrosoftDocs/azure-docs/blob/main/ThirdPartyNotices.md) 與 [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) 使用。原圖連結、修改說明與無擔保聲明均置於該頁圖說。黑色區塊為追加的識別資訊遮蔽；輸出 PNG 已移除嵌入中繼資料。截圖不代表本課 Demo 已在 Azure 執行，也不表示 Microsoft 為本課背書。
 
 ## 常用名詞
 

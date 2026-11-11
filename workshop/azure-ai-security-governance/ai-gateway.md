@@ -28,6 +28,20 @@ permalink: /workshop/azure-ai-security-governance/ai-gateway/
 
 編輯 policy 前保留原設定；不要以一份空白 policy 蓋掉匯入所需的 `set-backend-service` 或驗證設定。
 
+## 實際 Portal 截圖
+
+以下為 **Microsoft Learn 已公開的真實 Portal 截圖**，不是生成圖片、模擬 Portal 或本課沙盒實測。畫面版本、模型與選項可能與目前入口不同；黑色區塊為本教材追加的不可逆像素遮蔽。資源名稱、端點、訂用顯示值及部署識別欄位已移除，不要以截圖中的模型範例作為本課參數。
+
+![官方 Portal：選取 AI Service 並從 deployments 檢查模型；環境識別欄位已遮蔽](../assets/images/deployments-redacted.png)
+
+**圖 1：確認模型來源。** 在 Select AI Service 檢視所選服務的 deployments，核對部署對應的模型與版本。圖中部署名稱已遮蔽，實作要填自己預先準備的 `$deployment`，不是直接填模型商品名稱。圖中 OpenAI 類型是原官方範例；本課依[Foundry 環境準備](../short-demos/#課前準備不計入展示時間)選取自己的 Foundry 資源。
+
+![官方 Portal：Configure API 的 Client compatibility 選項；環境識別欄位已遮蔽](../assets/images/client-compatibility-redacted.png)
+
+**圖 2：確認用戶端相容模式。** 比較 Azure OpenAI、Azure AI 與 Azure OpenAI v1。本課選 Azure OpenAI，Base path 自行填 `ai`，呼叫路徑含 deployment；不要直接套用官方截圖的選取狀態或其他模式的路徑。
+
+兩圖來源：Microsoft 與文件貢獻者，[Import a Microsoft Foundry API](https://learn.microsoft.com/en-us/azure/api-management/azure-ai-foundry-api)；原圖 [deployments.png](https://raw.githubusercontent.com/MicrosoftDocs/azure-docs/main/articles/api-management/media/azure-ai-foundry-api/deployments.png)、[client-compatibility.png](https://raw.githubusercontent.com/MicrosoftDocs/azure-docs/main/articles/api-management/media/azure-ai-foundry-api/client-compatibility.png)。依公開儲存庫 [Legal Notices](https://github.com/MicrosoftDocs/azure-docs/blob/main/ThirdPartyNotices.md) 與 [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) 使用；取用日 2026-11-11。本教材修改僅為識別資料遮蔽與移除嵌入中繼資料，未改寫操作結果。素材依授權按現狀提供、無擔保；商標權不包含於授權，亦不表示 Microsoft 為本課背書。
+
 ## 操作二：建立每應用訂用
 
 1. APIM → **Products** 建立 `lab-teaching`，設定 Published、**Requires subscription**，加入剛匯入的 API。
@@ -79,5 +93,7 @@ try {
 ## 回復與清理
 
 保留 APIM 供後續 Lab 使用。課後移除本次建立的訂用、Product 與 APIM MI 角色指派，再刪除專用 APIM。刪除 API 或停用 Gateway **不等於刪除 APIM，也不會停止其執行個體費用**。
+
+如需保留必要的 Gateway 訂用金鑰，先完成[雙 Key 輪替與外洩止血演練](../key-rotation/)，而非只更換應用設定卻讓舊 Key 繼續有效。
 
 [下一步：Token 配額與隔離驗證](../token-governance/)
