@@ -124,15 +124,17 @@ Policy 從父層 Scope 向下繼承。應在最高適合的層級指派，避免
 
 ### 4.1 強制命名規範（Naming Convention）
 
-確保所有資源命名符合本院《Azure 資源命名規則》文件：
+確保資源命名符合本院[《Azure 資源命名規則》](../naming-convention/)的元件與長度要求。下列 Regex 是供部署前驗證使用的規格，**不是可直接貼入 Azure Policy 的 policyRule**：
 
-| 資源類型 | 命名模式（Regex） | Effect | 說明 |
+| 資源類型 | 部署前驗證模式（Regex） | 目標 Effect | 說明 |
 |---------|----------------|--------|------|
-| Resource Group | `^rg-[a-z]+-[a-z]+-[a-z]+-[a-z]+$` | Deny | 例：`rg-hosp-his-prod-twn`；不符合即拒絕建立 |
-| Virtual Network | `^vnet-[a-z]+-[a-z]+-[a-z]+-[a-z]+-\d{3}$` | Deny | 例：`vnet-hosp-his-prod-twn-001` |
-| Storage Account | `^st[a-z0-9]{5,18}$` | Deny | 無連字號，24 字元內全小寫英數字 |
-| Key Vault | `^kv-[a-z]+-[a-z]+-[a-z]+-[a-z]+-\d{3}$` | Deny | 例：`kv-hosp-his-prod-twn-001` |
-| Virtual Machine | `^vm-[a-z]+-[a-z]+-[a-z]+-[a-z]+-\d{3}$` | Deny | 例：`vm-hosp-his-prod-twn-001` |
+| Resource Group | `^rg-[a-z][a-z0-9]{1,5}-[a-z][a-z0-9]{2,5}-(prod\|stg\|dev\|test)-(twn\|sea\|jpe\|jpw\|krc)$` | Deny | 例：`rg-hosp-his-prod-twn`；org 2～6、wl 3～6 碼 |
+| Virtual Network | `^vnet-[a-z][a-z0-9]{1,5}-[a-z][a-z0-9]{2,5}-(prod\|stg\|dev\|test)-(twn\|sea\|jpe\|jpw\|krc)-(?!000)[0-9]{3}$` | Deny | 例：`vnet-hosp-his-prod-twn-001` |
+| Storage Account | `^st[a-z][a-z0-9]{1,5}[a-z][a-z0-9]{2,5}(prod\|stg\|dev\|test)(?!000)[0-9]{3}$` | Deny | 例：`sthosphisprod001`；本專案格式 13～21 字元，Azure 允許 3～24，不能將舊模式的 20 字元上限誤稱為 24 |
+| Key Vault | `^(?=.{3,24}$)kv-[a-z][a-z0-9]{1,5}-[a-z][a-z0-9]{2,5}-(prod\|stg\|dev\|test)-(twn\|sea\|jpe\|jpw\|krc)-(?!000)[0-9]{3}$` | Deny | 例：`kv-hosp-his-prod-twn-001`；總長不得超過 24，超長須登記短別名 |
+| Virtual Machine（ARM name） | `^vm-[a-z][a-z0-9]{1,5}-[a-z][a-z0-9]{2,5}-(prod\|stg\|dev\|test)-(twn\|sea\|jpe\|jpw\|krc)-(?!000)[0-9]{3}$` | Deny | 例：`vm-hosp-his-prod-twn-001`；Windows `computerName` 另設如 `vmhisp001`，不能以此 Regex 驗證 OS 名稱 |
+
+Azure Policy 的 `match` / `notMatch` 是特定字元模式（`#` 代表數字、`?` 代表字母、`.` 代表任意字元），不是 Regex；`like` 也不是 Regex。實作時須按資源類型，以支援的條件、字串函式與參數轉寫元件和長度檢查；這裡的正規表示式應由支援 Regex 的部署前檢查執行，並確認輸入不含換行。Storage 等緊接格式亦須核對已登記的元件值，不能只靠 Regex 推斷唯一的元件分界。來源：[Azure Policy conditions](https://learn.microsoft.com/azure/governance/policy/concepts/definition-structure-policy-rule#conditions)。
 
 {: .note }
 命名規範 Policy 建議分階段啟用：先 **Audit** 2 週觀察現有不符合資源，再切換為 **Deny**；避免突然封鎖既有工作負載。
@@ -253,7 +255,7 @@ Azure 內建的「HIPAA HITRUST 9.2」及「ISO 27001:2013」Initiative 也可�
 | RBAC | Policy 強制 Tag 可輔助 RBAC：只有帶有正確 Tag 的資源才允許特定角色存取（Condition）；搭配使用可達到屬性為基礎的存取控制（ABAC） |
 | Defender for Cloud | Defender 的建議事項（Recommendations）直接對應 Policy 定義；啟用 Defender 計畫後，相關 Policy 自動指派並追蹤修補進度 |
 | Azure Monitor / Log Analytics | DeployIfNotExists Policy 自動在新 VM 安裝 Log Agent；確保監控覆蓋率 100%，不遺漏任何新建資源 |
-| 命名規範文件 | Policy 的命名規範 Deny 規則直接引用《Azure 資源命名規則》文件定義的 Regex Pattern；兩份文件需同步更新 |
+| 命名規範文件 | Policy 的命名規範 Deny 條件與部署前 Regex 檢查需同步《Azure 資源命名規則》的元件與長度要求；不可將 Regex 直接當成 Policy match 模式 |
 | Azure Blueprints（或 Bicep） | 將 Policy Assignment + RBAC + Resource Group 打包為一個可重複部署的 Blueprint；確保每次新建環境都自動套用所有 Policy |
 
 ---
@@ -278,7 +280,7 @@ Azure 內建的「HIPAA HITRUST 9.2」及「ISO 27001:2013」Initiative 也可�
 | ☐ 監控 | 設定合規率低於閾值的 Alert（Security：<95%，PHI：<100%）通知資安部門 |
 | ☐ 報告 | 建立每週自動合規報告（Azure Monitor Workbook 或 CSV 匯出） |
 | ☐ 稽核 | 排程每季一次完整合規報告匯出，附 Exemption 清單，留存 3 年供稽核備查 |
-| ☐ 整合 | 確認 Policy 定義與命名規範文件的 Regex Pattern 保持同步 |
+| ☐ 整合 | 確認 Policy 條件、部署前 Regex 與命名規範文件的元件及長度限制保持同步 |
 
 {: .warning }
 Policy 導入初期最常見的問題是「Deny 太早，封鎖業務」或「Audit 太久，從未收緊」。建議設定明確的三個月導入時程，並由 IT 主管定期確認推進狀況。
