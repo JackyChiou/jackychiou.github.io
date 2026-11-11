@@ -15,6 +15,7 @@ permalink: /workshop/
 | 主題 | 說明 | 狀態 |
 |------|------|------|
 | [Azure Landing Zone 醫療雲端](./azure-landing-zone/) | 以醫療院所為情境，從零建立符合個資法與 HIPAA 的 Azure Landing Zone（M1–M6 六大模組） | ✅ 可用 |
+| [Azure AI 資安與治理實戰](./azure-ai-security-governance/) | 以校園與多團隊情境練習無金鑰存取、AI Gateway、Token 配額、監控與 Entra 高權限治理 | ✅ 可用 |
 
 ---
 
