@@ -23,6 +23,95 @@
   }
 }
 
+// ─── Home page ───────────────────────────────────────────────────────────────
+.home-hero {
+  padding: 2rem 1.5rem;
+  margin-bottom: 2rem;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #0078d4 0%, #5c2d91 100%);
+  color: #fff;
+
+  h1 {
+    margin-top: 0;
+    color: #fff;
+  }
+
+  .home-tagline {
+    font-size: 1.1rem;
+    font-weight: 300;
+    margin-bottom: 1.25rem;
+    color: #f0f0f5;
+  }
+
+  .home-cta .btn {
+    margin: 0 0.4rem 0.4rem 0;
+  }
+}
+
+.update-list {
+  list-style: none;
+  margin: 0 0 2rem;
+  padding: 0;
+
+  li {
+    display: flex;
+    gap: 1rem;
+    padding: 0.9rem 0;
+    border-bottom: 1px solid $border-color;
+  }
+
+  .update-date {
+    flex: 0 0 6.5rem;
+    color: $grey-dk-000;
+    font-variant-numeric: tabular-nums;
+    font-size: 0.85rem;
+    padding-top: 0.2rem;
+  }
+
+  p {
+    margin: 0.3rem 0 0;
+    color: $grey-dk-000;
+  }
+
+  @media (max-width: 50rem) {
+    li {
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+  }
+}
+
+.topic-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.topic-card {
+  display: block;
+  padding: 1rem 1.2rem;
+  border: 1px solid $border-color;
+  border-radius: 6px;
+  text-decoration: none;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  transition: box-shadow 0.15s, transform 0.15s;
+
+  h3 {
+    margin: 0 0 0.4rem;
+  }
+
+  p {
+    margin: 0;
+    color: $grey-dk-000;
+  }
+
+  &:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+  }
+}
+
 // ─── Post page ───────────────────────────────────────────────────────────────
 article.post {
   .post-header {
