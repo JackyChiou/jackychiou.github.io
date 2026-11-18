@@ -35,7 +35,7 @@ permalink: /workshop/azure-ai-security-governance/key-rotation/
 function Test-LabKey {
   param(
     [Parameter(Mandatory)][string]$Uri,
-    [Parameter(Mandatory)][ValidateSet("api-key","Ocp-Apim-Subscription-Key")]
+    [Parameter(Mandatory)][ValidateSet("api-key")]
     [string]$HeaderName,
     [Parameter(Mandatory)][string]$Key
   )
@@ -125,7 +125,7 @@ if ((Read-Host "確認專用訂用 ID，輸入該 ID 以允許輪替") -cne $sid
   throw "訂用未確認，停止。"
 }
 $oldPrimary = Read-Host "輸入 A 目前的 Primary" -MaskInput
-if ((Test-LabKey -Uri $gatewayUri -HeaderName "Ocp-Apim-Subscription-Key" -Key $oldPrimary) -ne 200) {
+if ((Test-LabKey -Uri $gatewayUri -HeaderName "api-key" -Key $oldPrimary) -ne 200) {
   throw "原 Primary 未成功，停止輪替。"
 }
 az rest --method post `
@@ -133,11 +133,11 @@ az rest --method post `
 if ($LASTEXITCODE -ne 0) { throw "Secondary 重新產生失敗，停止。" }
 ```
 
-3. Portal 重新取得 Secondary，測試並遷移所有 A 用戶端。使用與本課 API 一致的預設 `Ocp-Apim-Subscription-Key` 標頭；若自訂過需同步調整函式與 API。
+3. Portal 重新取得 Secondary，測試並遷移所有 A 用戶端。使用與本課 API 一致的 `api-key` 訂用標頭；先依 [Gateway Lab](../ai-gateway/#操作二建立每應用訂用)確認 API 的標頭設定。
 
 ```powershell
 $newSecondary = Read-Host "輸入 A 新 Secondary" -MaskInput
-if ((Test-LabKey -Uri $gatewayUri -HeaderName "Ocp-Apim-Subscription-Key" -Key $newSecondary) -ne 200) {
+if ((Test-LabKey -Uri $gatewayUri -HeaderName "api-key" -Key $newSecondary) -ne 200) {
   throw "新 Secondary 未成功，保留原 Primary，停止。"
 }
 if ((Read-Host "所有 A 用戶端已切換 Secondary 並驗證成功？輸入 SWITCHED") -cne "SWITCHED") {
@@ -148,9 +148,9 @@ az rest --method post `
 if ($LASTEXITCODE -ne 0) { throw "Primary 重新產生失敗，停止。" }
 $newPrimary = Read-Host "輸入 A 新 Primary" -MaskInput
 try {
-  "舊 Primary：HTTP {0}" -f (Test-LabKey -Uri $gatewayUri -HeaderName "Ocp-Apim-Subscription-Key" -Key $oldPrimary)
-  "新 Primary：HTTP {0}" -f (Test-LabKey -Uri $gatewayUri -HeaderName "Ocp-Apim-Subscription-Key" -Key $newPrimary)
-  "新 Secondary：HTTP {0}" -f (Test-LabKey -Uri $gatewayUri -HeaderName "Ocp-Apim-Subscription-Key" -Key $newSecondary)
+  "舊 Primary：HTTP {0}" -f (Test-LabKey -Uri $gatewayUri -HeaderName "api-key" -Key $oldPrimary)
+  "新 Primary：HTTP {0}" -f (Test-LabKey -Uri $gatewayUri -HeaderName "api-key" -Key $newPrimary)
+  "新 Secondary：HTTP {0}" -f (Test-LabKey -Uri $gatewayUri -HeaderName "api-key" -Key $newSecondary)
 } finally {
   Remove-Variable oldPrimary, newPrimary, newSecondary
 }

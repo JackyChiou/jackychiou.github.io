@@ -47,7 +47,7 @@ $gatewayUri = "$gatewayBase/openai/deployments/$deployment/chat/completions?api-
 $keyA = Read-Host "輸入 A 的 Product 訂用金鑰" -MaskInput
 try {
   $withKey = Invoke-WebRequest -Uri $gatewayUri -Method Post `
-    -Headers @{ "Ocp-Apim-Subscription-Key" = $keyA } `
+    -Headers @{ "api-key" = $keyA } `
     -ContentType "application/json" -Body $body -SkipHttpErrorCheck
   $withoutKey = Invoke-WebRequest -Uri $gatewayUri -Method Post `
     -ContentType "application/json" -Body $body -SkipHttpErrorCheck
