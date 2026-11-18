@@ -35,7 +35,6 @@ if ($LASTEXITCODE -ne 0 -or [string]::IsNullOrWhiteSpace($token)) {
 $uri = "$modelEndpoint/openai/deployments/$deployment/chat/completions?api-version=2024-10-21"
 $body = @{
   messages = @(@{ role = "user"; content = "ping" })
-  max_tokens = 16
 } | ConvertTo-Json -Depth 5
 
 try {
