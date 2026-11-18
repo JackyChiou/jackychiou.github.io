@@ -15,6 +15,10 @@ description: 以無金鑰存取、AI Gateway、Token 配額與 Entra 最小權�
 
 當教學、研究與行政應用共用 AI 服務，如何避免共用金鑰外洩、單一專案耗盡額度，以及管理權限長期累積？本課以 Microsoft Foundry（部分介面仍使用 Azure AI Foundry 名稱）與 Azure API Management（APIM）的 AI Gateway 為主軸，將治理要求轉成可驗證的操作。
 
+## 教材下載
+
+[下載課程教材 PDF：Azure AI 資安與治理實戰課程（2026-11-18）](./assets/azure-ai-security-governance-20261118.pdf){: download="Azure AI 資安與治理實戰課程_20261118.pdf" }
+
 ## 學習目標
 
 完成後，你將能盤點 AI 資源與高權限、以 Microsoft Entra ID / Managed Identity 取代模型金鑰、建立 Gateway 統一入口、為不同應用設定 Token 限額，並用日誌與權限複核形成營運閉環。
