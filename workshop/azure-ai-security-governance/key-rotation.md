@@ -44,7 +44,6 @@ function Test-LabKey {
   }
   $body = @{
     messages = @(@{ role = "user"; content = "ping" })
-    max_tokens = 16
   } | ConvertTo-Json -Depth 5
   $r = Invoke-WebRequest -Uri $Uri -Method Post `
     -Headers @{ $HeaderName = $Key } -ContentType "application/json" `

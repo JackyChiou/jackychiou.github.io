@@ -62,7 +62,6 @@ $gatewayKey = Read-Host "輸入 lab-app-a 的 Product 訂用金鑰" -MaskInput
 $gatewayUri = "$gatewayBase/openai/deployments/$deployment/chat/completions?api-version=2024-10-21"
 $body = @{
   messages = @(@{ role = "user"; content = "ping" })
-  max_tokens = 16
 } | ConvertTo-Json -Depth 5
 
 try {
