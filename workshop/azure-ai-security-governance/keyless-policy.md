@@ -75,7 +75,7 @@ try {
 
 ## 操作三：Azure Policy 先 Audit 再 Deny
 
-1. Portal → **Policy → Definitions**，搜尋停用 AI Services 本機驗證的內建定義，讀取其適用資源、參數與支援效果。
+1. Portal → **Policy → Definitions**，搜尋停用 AI Services 本機驗證的內建定義，讀取其適用資源、參數與支援效果。Policy Name: Azure AI Services resources should have key access disabled
 2. 在**專用資源群組**指派 `Audit`，檢視 Compliance。若查不到相符定義，停止此部分並記下資源種類，不隨意套用其他 Policy。
 3. 檢查非合規項目與應用依賴；確認無金鑰測試通過後，才把這個沙盒指派改為 `Deny`。
 4. 在相同範圍嘗試建立一個啟用本機驗證的測試資源（不必部署付費模型），預期 `RequestDisallowedByPolicy`。若成功，確認指派範圍、排除項目與傳播，再清理該測試資源。
