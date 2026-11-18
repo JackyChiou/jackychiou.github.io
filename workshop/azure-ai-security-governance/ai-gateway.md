@@ -45,7 +45,7 @@ permalink: /workshop/azure-ai-security-governance/ai-gateway/
 ## 操作二：建立每應用訂用
 
 1. APIM → **Products** 建立 `lab-teaching`，設定 Published、**Requires subscription**，加入剛匯入的 API。
-2. 在 API 的設定中確認也要求 subscription，檢查沒有其他不需要訂用的 Product 暴露此 API。
+2. 在 API 的設定中確認也要求 subscription，將 **Subscription key → Header** 設為 `api-key` 並儲存，檢查沒有其他不需要訂用的 Product 暴露此 API。
 3. APIM → **Subscriptions** 建立 `lab-app-a`，Scope 明確選 **Product → lab-teaching**。
 4. 不使用 All APIs、單一 API 範圍或內建 all-access 金鑰。這些金鑰不能用來驗證 Product 範圍的限額。
 
@@ -67,7 +67,7 @@ $body = @{
 
 try {
   $result = Invoke-WebRequest -Uri $gatewayUri -Method Post `
-    -Headers @{ "Ocp-Apim-Subscription-Key" = $gatewayKey } `
+    -Headers @{ "api-key" = $gatewayKey } `
     -ContentType "application/json" -Body $body -SkipHttpErrorCheck
   "HTTP {0}" -f [int]$result.StatusCode
 } finally {
@@ -75,7 +75,7 @@ try {
 }
 ```
 
-預期 `200`。訂用標頭名稱若已修改，需以 API 設定為準。不要把模型 `api-key` 一起送給 Gateway。
+預期 `200`。`api-key` 標頭須與 API 的訂用標頭設定一致，值使用 APIM Product 訂用金鑰，不是模型金鑰；後端仍使用 Managed Identity。
 
 ## 驗收與防繞過
 

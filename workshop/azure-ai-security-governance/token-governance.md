@@ -54,13 +54,13 @@ $keyB = Read-Host "輸入 lab-app-b 的金鑰" -MaskInput
 try {
   foreach ($i in 1..20) {
     $r = Invoke-WebRequest -Uri $gatewayUri -Method Post `
-      -Headers @{ "Ocp-Apim-Subscription-Key" = $keyA } `
+      -Headers @{ "api-key" = $keyA } `
       -ContentType "application/json" -Body $body -SkipHttpErrorCheck
     "A: HTTP {0}; retry-after={1}" -f [int]$r.StatusCode, ($r.Headers["Retry-After"] -join ",")
     if ([int]$r.StatusCode -ne 200) { break }
   }
   $r = Invoke-WebRequest -Uri $gatewayUri -Method Post `
-    -Headers @{ "Ocp-Apim-Subscription-Key" = $keyB } `
+    -Headers @{ "api-key" = $keyB } `
     -ContentType "application/json" -Body $body -SkipHttpErrorCheck
   "B: HTTP {0}" -f [int]$r.StatusCode
 } finally {
